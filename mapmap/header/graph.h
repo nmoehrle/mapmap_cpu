@@ -7,8 +7,8 @@
  * of the BSD license. See the LICENSE file for details.
  */
 
-#ifndef __MAPMAP_GRAPH_H_
-#define __MAPMAP_GRAPH_H_
+#ifndef __MAPMAP_HEADER_GRAPH_H_
+#define __MAPMAP_HEADER_GRAPH_H_
 
 #include <vector>
 #include <memory>
@@ -67,4 +67,4 @@ NS_MAPMAP_END
 
 #include "source/graph.impl.h"
 
-#endif /* __MAPMAP_GRAPH_H_ */
+#endif /* __MAPMAP_HEADER_GRAPH_H_ */

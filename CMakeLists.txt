@@ -61,6 +61,7 @@ set(header_base
     ${header_dir}/defines.h
 	${header_dir}/dynamic_programming.h
     ${header_dir}/graph.h
+	${header_dir}/graph_coloring.h
 	${header_dir}/mapmap.h
 	${header_dir}/multilevel.h
 	${header_dir}/parallel_templates.h
@@ -75,6 +76,7 @@ set(impl_base
 	${impl_dir}/costs.impl.h
 	${impl_dir}/dynamic_programming.impl.h
     ${impl_dir}/graph.impl.h
+	${impl_dir}/graph_coloring.impl.h
 	${impl_dir}/mapmap.impl.h
 	${impl_dir}/multilevel.impl.h
 	${impl_dir}/parallel_templates.impl.h
@@ -117,7 +119,13 @@ set(impl_termination_instances
 	${impl_dir}/termination_instances/stop_after_time.impl.h
 	${impl_dir}/termination_instances/stop_when_flat.impl.h
 	${impl_dir}/termination_instances/stop_when_returns_diminish.impl.h)
+
+# graph coloring instances
+set(header_coloring_instances
+	${header_dir}/coloring_instances/sequential_coloring.h)
 	
+set(impl_coloring_instances
+	${impl_dir}/coloring_instances/sequential_coloring.impl.h)
 # test files
 set(header_test
 	${test_dir}/util_test.h)
@@ -137,6 +145,7 @@ set_source_files_properties(${header_base} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${header_cost_instances} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${header_multilevel_instances} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${header_termination_instances} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties(${header_coloring_instances} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 source_group("Base" FILES 
     ${header_base} 
@@ -150,6 +159,9 @@ source_group("Multilevel" FILES
 source_group("Termination" FILES
 	${header_termination_instances}
 	${impl_termination_instances})
+source_group("Coloring" FIELS
+	${header_coloring_instances}
+	${impl_coloring_instances})
 source_group("Test" FILES 
     ${header_test} 
     ${impl_test}
@@ -167,7 +179,6 @@ endif(BUILD_TEST)
 # build demo executable solver
 if(BUILD_DEMO)
 add_executable(mapmap_demo
-	${src_base}
 	${demo_dir}/mapmap_demo.cc)
 target_link_libraries(mapmap_demo
 	${TBB_LIBRARIES})
